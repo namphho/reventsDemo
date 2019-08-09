@@ -80,6 +80,7 @@ body {
 .ui.main.container,
 .main.segment {
   margin-top: 7em;
+
 }
 
 .ui.center.aligned.segment.attendance-preview {
@@ -117,4 +118,8 @@ body {
 
 .dropzone--isActive {
   border: dashed 3px green;
+}
+
+.ui.grid.row.blue.column {
+  color: #000;
 }
