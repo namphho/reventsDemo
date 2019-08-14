@@ -123,3 +123,6 @@ body {
 .ui.grid.row.blue.column {
   color: #000;
 }
+.ui.grid>.row>.blue.column {
+  color: #000;
+}
