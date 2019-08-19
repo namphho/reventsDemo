@@ -12,7 +12,7 @@ class EventFrom extends Component {
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
-    console.log(this.state)
+    this.props.createEvent(this.state)
   }
 
   // handleInputChange = (evt) => {

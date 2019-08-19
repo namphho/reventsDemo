@@ -32,14 +32,14 @@ class EventListItem extends Component {
         </Segment>
         <Segment secondary>
           <List horizontal>
-            {this.props.event.attendees.map(person => {
+            {event.attendees && event.attendees.map(person => {
               console.log(person.id)
               return <EventListAttendee key={person.id} attendees={person} data={123}/>;
             })}
           </List>
         </Segment>
         <Segment clearing>
-          {this.props.event.description}
+          {event.description}
           <Button as="a" color="teal" floated="right" content="View" />
         </Segment>
       </Segment.Group>
