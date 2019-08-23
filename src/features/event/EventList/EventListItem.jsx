@@ -4,7 +4,7 @@ import EventListAttendee from "./EventListAttendee";
 
 class EventListItem extends Component {
   render() {
-    const {event} = this.props;
+    const {event, selectEvent} = this.props;
     return (
       <Segment.Group>
         <Segment>
@@ -40,7 +40,7 @@ class EventListItem extends Component {
         </Segment>
         <Segment clearing>
           {event.description}
-          <Button as="a" color="teal" floated="right" content="View" />
+          <Button as="a" onClick={() => selectEvent(event)} color="teal" floated="right" content="View" />
         </Segment>
       </Segment.Group>
     );
@@ -48,3 +48,5 @@ class EventListItem extends Component {
 }
 
 export default EventListItem;
+
+// onClick={() => selectEvent(event)} => dont call selectEvent when UI is renderd
