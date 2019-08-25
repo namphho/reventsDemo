@@ -4,7 +4,7 @@ import { Segment, Form, Button } from "semantic-ui-react";
 
 class EventFrom extends Component {
   state = {
-    title: 'abc dat de di ',
+    title: '',
     date: '',
     city: '',
     venue: '',
@@ -22,7 +22,11 @@ class EventFrom extends Component {
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
-    this.props.createEvent(this.state)
+    if (this.state.id) {
+      this.props.updateEvent(this.state)
+    } else {
+      this.props.createEvent(this.state)  
+    }
   }
 
   // handleInputChange = (evt) => {
