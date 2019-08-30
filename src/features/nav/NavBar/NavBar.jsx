@@ -14,6 +14,7 @@ class NavBar extends Component {
     this.setState({ authenticated: false });
     this.props.history.push("/");
   }
+  
 
   render() {
     const { authenticated } = this.state;
