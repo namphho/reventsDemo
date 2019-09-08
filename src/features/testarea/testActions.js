@@ -13,4 +13,5 @@ export const decrementCounter = () => {
     }
 }
 
+//actions la tap hop cac functions
 //muon send data toi state thi nhu the nao ha
