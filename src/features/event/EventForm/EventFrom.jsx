@@ -87,7 +87,7 @@ class EventFrom extends Component {
           <Form.Field>
             <label>Hosted By</label>
             <input
-              name="hosted"
+              name="hostedBy"
               onChange={this.handleInputChange}
               value={hostedBy}
               placeholder="Enter the name of person hosting"
