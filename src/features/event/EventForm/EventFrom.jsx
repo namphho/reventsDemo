@@ -1,15 +1,27 @@
 import React, { Component } from "react";
 import { Segment, Form, Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { connect} from "react-redux";
 
-class EventFrom extends Component {
-  state = {
+const mapState = (state, ownerProps) => {
+  const eventId = ownerProps.match.params.id;
+  let event = {
     title: "",
     date: "",
     city: "",
     venue: "",
     hostedBy: ""
-  };
+  }
+  if (eventId && state.events.length > 0){
+    event = state.events.filter(event => event.id === eventId)[0];
+  }
+  console.log(event);
+  return {
+    event
+  }
+}
+
+class EventFrom extends Component {
+  state = {...this.props.event};
 
   componentDidMount() {
     if (this.props.selectedEvent !== null) {
@@ -42,7 +54,7 @@ class EventFrom extends Component {
   };
 
   render() {
-    const { cancelFormOpen } = this.props;
+    //const { cancelFormOpen } = this.props;
     const { title, date, city, venue, hostedBy } = this.state;
     return (
       <Segment>
@@ -98,7 +110,7 @@ class EventFrom extends Component {
           </Button>
           <Button
             type="button"
-            onClick={cancelFormOpen}
+            onClick={this.props.history.goBack}
           >
             Cancel
           </Button>
@@ -107,4 +119,4 @@ class EventFrom extends Component {
     );
   }
 }
-export default EventFrom;
+export default connect(mapState)(EventFrom);

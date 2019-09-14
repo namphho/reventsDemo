@@ -63,7 +63,7 @@ const initialData = [
     return [...state.filter(event => event.id !== payload.eventId)]
   }
 
-  export default createReducer(initialData, {
+export default createReducer(initialData, {
       [CREATE_EVENT] : createEvent,
       [UPDATE_EVENT] : updateEvent,
       [DELETE_EVENT] : deleteEvent
