@@ -1,16 +1,20 @@
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./testConstants";
 import { createReducer } from "../../app/common/utils/reducerUtils";
 
+//data khởi tạo ban đầu
 const initialState = {
   data: 42
 };
 
-const incrementCounter = (state) => {
-    return { ...state, data: state.data + 1 }
-}
 
+//thay đổi initial-data & return data
+
+const incrementCounter = (state) => {
+    return {...state, data: state.data + 1 }
+}
+//return new state with data: state.data - 1
 const decrementCounter = (state) => {
-    return { ...state, data: state.data - 1 }
+    return {...state, data: state.data - 1 }
 }
 
 

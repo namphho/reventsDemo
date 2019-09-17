@@ -40,7 +40,7 @@ class EventDashboard extends Component {
 
 
   render() {
-    const {events} = this.props;
+const {events} = this.props;
     return (
       <div>
         <Grid>
