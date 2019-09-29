@@ -5,19 +5,22 @@ import { Icon } from 'semantic-ui-react';
 const AnyReactComponent = () => <Icon name='marker' size='big' color='red'/>;
 
 class SimpleMap extends Component {
+  static defaultProps = {
+    zoom: 11
+  }
   render() {
-      const {center, zoom} = this.props;
+    const {latlng} = this.props;
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '300px', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCKKqgxu4UxPZ4mIG-ls_Rb3ey_GIogY5Y"}}
-          defaultCenter={center}
-          defaultZoom={zoom}
+          defaultCenter={latlng}
+          defaultZoom={this.props.zoom}
         >
           <AnyReactComponent
-            lat={center.lat}
-            lng={center.lng}
+            lat={latlng.lat}
+            lng={latlng.lng}
           />
         </GoogleMapReact>
       </div>

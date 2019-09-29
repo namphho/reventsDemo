@@ -4,10 +4,7 @@ import { incrementCounter, decrementCounter } from "./testActions";
 import { Button } from "semantic-ui-react";
 import TestPlaceInput from "./TestPlaceInput";
 import SimpleMap from "./SimpleMap";
-import {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import {geocodeByAddress,getLatLng,} from 'react-places-autocomplete';
 
 const mapState = state => ({
   data: state.test.data
@@ -20,7 +17,7 @@ const actions = {
 
 class TestComponent extends Component {
   state = {
-    center : {
+    latlng : {
       lat: 10.789788,
       lng: 106.688746
     }
@@ -31,7 +28,7 @@ class TestComponent extends Component {
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         this.setState({
-          center: latLng
+          latlng: latLng
         })
       })
       .catch(error => console.error('Error', error));
@@ -46,7 +43,7 @@ class TestComponent extends Component {
         <Button onClick={incrementCounter} positive content="increment" />
         <Button onClick={decrementCounter} negative content="increment" />
         <TestPlaceInput handleSelect={this.handleSelect}/>
-        <SimpleMap center={this.state.center} zoom={11}/>
+        <SimpleMap key={this.state.latlng.lat} latlng={this.state.latlng} zoom={11}/>
       </div>
     );
   }
