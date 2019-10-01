@@ -2,27 +2,31 @@ import { createReducer } from "../../app/common/utils/reducerUtils"
 import { ASYNC_ACTION_START, ASYNC_ACTION_FINISH, ASYNC_ACTION_ERROR } from "./asyncConstants"
 
 const initialState= {
-    loading: false
+    loading: false,
+    elementName: null
 }
 
-const asyncActionsStarted = (state) => {
+const asyncActionsStarted = (state, payload) => {
     return {
         ...state,
-        loading: true
+        loading: true,
+        elementName: payload
     }
 }
 
 const asyncActionsFinish = (state) => {
     return {
         ...state,
-        loading: false
+        loading: false,
+        elementName: null
     }
 }
 
 const asyncActionsError = (state) => {
     return {
         ...state,
-        loading: false
+        loading: false,
+        elementName: null
     }
 }
 

@@ -4,27 +4,28 @@ import { incrementAsync, decrementAsync } from "./testActions";
 import { Button } from "semantic-ui-react";
 import TestPlaceInput from "./TestPlaceInput";
 import SimpleMap from "./SimpleMap";
-import {geocodeByAddress,getLatLng,} from 'react-places-autocomplete';
-import {openModal} from '../modals/modalActions';
+import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import { openModal } from "../modals/modalActions";
 
 const mapState = state => ({
   data: state.test.data,
-  loading: state.async.loading
+  loading: state.async.loading,
+  buttonName: state.async.elementName
 });
 
 const actions = {
   incrementAsync,
   decrementAsync,
-  openModal,
+  openModal
 };
 
 class TestComponent extends Component {
   state = {
-    latlng : {
+    latlng: {
       lat: 10.789788,
       lng: 106.688746
     }
-  }
+  };
 
   handleSelect = address => {
     geocodeByAddress(address)
@@ -32,22 +33,49 @@ class TestComponent extends Component {
       .then(latLng => {
         this.setState({
           latlng: latLng
-        })
+        });
       })
-      .catch(error => console.error('Error', error));
+      .catch(error => console.error("Error", error));
   };
 
   render() {
-    const { data, incrementAsync, decrementAsync, openModal, loading } = this.props;
+    const {
+      data,
+      incrementAsync,
+      decrementAsync,
+      openModal,
+      loading,
+      buttonName
+    } = this.props;
     return (
       <div>
         <h1>Test component</h1>
         <h3> this is answer: {data}</h3>
-        <Button loading={loading} onClick={incrementAsync} positive content="increment" />
-        <Button loading={loading} onClick={decrementAsync} negative content="increment" />
-        <Button onClick={() => openModal("TestModal", {data: "Hoang Nam"})} color="teal" content="open modal" />
-        <TestPlaceInput handleSelect={this.handleSelect}/>
-        <SimpleMap key={this.state.latlng.lat} latlng={this.state.latlng} zoom={11}/>
+        <Button
+          name="increment"
+          loading={buttonName === 'increment' && loading}
+          onClick={(e) => incrementAsync(e.target.name)}
+          positive
+          content="increment"
+        />
+        <Button
+          name="decrement"
+          loading={buttonName === 'decrement' && loading}
+          onClick={(e) => decrementAsync(e.target.name)}
+          negative
+          content="decrement"
+        />
+        <Button
+          onClick={() => openModal("TestModal", { data: "Hoang Nam" })}
+          color="teal"
+          content="open modal"
+        />
+        <TestPlaceInput handleSelect={this.handleSelect} />
+        <SimpleMap
+          key={this.state.latlng.lat}
+          latlng={this.state.latlng}
+          zoom={11}
+        />
       </div>
     );
   }
