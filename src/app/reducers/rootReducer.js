@@ -6,6 +6,9 @@ import modalReducer from "../../features/modals/modalReducer";
 import authReducer from "../../features/auth/authReducer";
 import asyncReducer from "../../features/async/asyncReducer";
 import {reducer as ToastReducer} from "react-redux-toastr";
+import { firebaseReducer} from "react-redux-firebase";
+import { firestoreReducer } from "redux-firestore";
+
 
 const rootReducer = combineReducers({
     test: testReducer,
@@ -15,6 +18,8 @@ const rootReducer = combineReducers({
     auth: authReducer,
     async: asyncReducer,
     toastr: ToastReducer,
+    firebase: firebaseReducer,
+    firestore: firestoreReducer
 })
 
 export default rootReducer;
