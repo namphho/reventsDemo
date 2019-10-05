@@ -6,6 +6,7 @@ import TestPlaceInput from "./TestPlaceInput";
 import SimpleMap from "./SimpleMap";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { openModal } from "../modals/modalActions";
+import { toastr } from "react-redux-toastr";
 
 const mapState = state => ({
   data: state.test.data,
@@ -18,6 +19,7 @@ const actions = {
   decrementAsync,
   openModal
 };
+
 
 class TestComponent extends Component {
   state = {
@@ -69,6 +71,16 @@ class TestComponent extends Component {
           onClick={() => openModal("TestModal", { data: "Hoang Nam" })}
           color="teal"
           content="open modal"
+        />
+        <Button
+          onClick={() => toastr.success('ok', 'description')}
+          color="teal"
+          content="Open Toasts 1"
+        />
+        <Button
+          onClick={() => toastr.message('Title', 'Message')}
+          color="teal"
+          content="Open Toasts 2"
         />
         <TestPlaceInput handleSelect={this.handleSelect} />
         <SimpleMap

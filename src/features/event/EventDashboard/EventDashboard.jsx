@@ -5,6 +5,7 @@ import cuid from "cuid";
 import { connect } from "react-redux";
 import { createEvent, updateEvent, deleteEvent } from "../eventActions";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
+import EventActivity from "../EventActivity/EventActivity";
 
 //setup reducers
 const mapStateToProps = state => ({
@@ -43,7 +44,7 @@ class EventDashboard extends Component {
             <EventList event={events} deleteEvent={this.handleDeleteEvent} />
           </Grid.Column>
           <Grid.Column width={6}>
-            <h2>Activity Feed</h2>
+            <EventActivity/>
           </Grid.Column>
         </Grid>
       </div>
