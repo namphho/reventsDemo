@@ -25,7 +25,9 @@ const delay = (ms) => {
 }
 
 export const incrementAsync = (name) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const { test } = getState();
+        console.log(test.data)
         dispatch({type: ASYNC_ACTION_START, payload:  name});
         await delay(1000);
         dispatch(incrementCounter());
