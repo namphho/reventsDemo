@@ -6,16 +6,14 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "./app/store/configureStore";
-import { loadEvents } from "./features/event/eventActions";
 import ReduxToastr from "react-redux-toastr";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
 
 const store = configureStore();
-store.dispatch(loadEvents());
+
 
 const rootEl = document.getElementById("root");
 
-console.log(store.getState());
 
 let render = () => {
   ReactDOM.render(

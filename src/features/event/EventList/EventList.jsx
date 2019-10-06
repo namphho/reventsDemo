@@ -6,7 +6,7 @@ class EventList extends Component {
     const { event, selectEvent, deleteEvent } = this.props;
     return (
       <Fragment>
-        {event.map(event => {
+        {event && event.map(event => {
           console.log(">>>>>> " + event.id);
           return (
             <EventListItem
